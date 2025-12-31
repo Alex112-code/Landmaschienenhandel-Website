@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landmaschinenhandel Hofstetter – Verkauf & Service</title>
+<style>
+body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f4f6f5; color:#333; display:flex; }
+.header { background:#2f6b3f; color:#fff; padding:10px 20px; display:flex; align-items:center; justify-content:flex-start; width:100%; position:fixed; top:0; z-index:1001; }
+.header-title { font-size:1.2rem; font-weight:bold; margin-left:20px; }
+.hamburger { width:30px; height:25px; position:relative; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; margin-right:20px; }
+.hamburger span { display:block; height:4px; background:#fff; border-radius:2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+.sidebar { position:fixed; top:0; left:-250px; width:250px; height:100vh; background:#2f6b3f; color:#fff; padding:20px; box-sizing:border-box; transition: left 0.3s; z-index:1000; overflow-y:auto; }
+.sidebar.active { left:0; }
+.sidebar h2 { margin-top:0; }
+.sidebar button { display:block; width:100%; background:none; border:none; color:#fff; text-align:left; padding:10px 15px; margin:5px 0; font-size:1rem; cursor:pointer; border-radius:5px; }
+.sidebar button:hover { background:#3f7f50; }
+.main { flex:1; padding:80px 20px 20px 20px; transition: margin-left 0.3s; margin-left:0; }
+.main.shifted { margin-left:250px; }
+.container { max-width:1100px; margin:auto; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+.card { background:#fff; border-radius:10px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.25); }
+.card img { width:100%; border-radius:8px; margin-bottom:15px; }
+.card h3 { margin-top:0; color:#2f6b3f; }
+.card p { margin:5px 0; }
+.page { display:none; }
+.page.active { display:block; }
+input, select, textarea { width:100%; padding:10px; margin-bottom:10px; }
+button.submit { background:#2f6b3f; color:#fff; padding:12px; border:none; border-radius:5px; cursor:pointer; margin-top:5px; }
+footer { background:#222; color:#fff; text-align:center; padding:20px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="hamburger" onclick="toggleSidebar(this)">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="header-title">Landmaschinenhandel Hofstetter</div>
+</div>
+
+<div class="sidebar" id="sidebar">
+<h2>Navigation</h2>
+<button onclick="window.showPage('start'); toggleSidebar()">Start</button>
+<button onclick="window.showPage('maschinen'); toggleSidebar()">Maschinen</button>
+<button onclick="window.showPage('service'); toggleSidebar()">Service</button>
+<button onclick="window.showPage('kontakt'); toggleSidebar()">Kontakt</button>
+<button onclick="window.showPage('gebraucht'); toggleSidebar()">Gebrauchtmaschinen</button>
+</div>
+
+<div class="main" id="main">
+
+<!-- STARTSEITE -->
+<section id="start" class="page active">
+<div class="container">
+<div class="hero">
+<h2>Ihr starker Partner für Landmaschinen & Nutzfahrzeuge</h2>
+<p>Verkauf, Service und Ersatzteile – alles aus einer Hand für Ihren Erfolg.</p>
+</div>
+<h2>Willkommen</h2>
+<p>Landmaschinenhandel Hofstetter bietet Ihnen modernste Technik, fachkundige Beratung und maßgeschneiderte Lösungen für jeden landwirtschaftlichen Betrieb.</p>
+<div style="margin-top:40px; text-align:center;">
+<h3>Unser Betrieb in Aktion</h3>
+<p>Erleben Sie unsere hochwertigen Maschinen, innovative Lösungen und das Engagement unseres erfahrenen Teams.</p>
+<img src="https://via.placeholder.com/900x400" alt="Landmaschinenhandel Hofstetter – Betrieb & Maschinen" style="max-width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+</div>
+<div style="margin-top:60px; background:#ffffff; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+<h3>Kontakt & Öffnungszeiten</h3>
+<p>Wir stehen Ihnen persönlich zur Verfügung. Nutzen Sie unsere Kontaktmöglichkeiten oder besuchen Sie uns direkt vor Ort.</p>
+<div class="grid" style="margin-top:20px;"><div class="card"><h4>Name</h4><p><strong>Landmaschinenhandel Hofstetter</strong><br>Inhaber: Jan Hofstetter<br>Mitarbeiter: Liam Geiger</p></div>
+<div class="card"><h4>Standort</h4><p>Musterstraße 12<br>12345 Musterstadt</p></div>
+<div class="card"><h4>Öffnungszeiten</h4><p>Montag – Freitag: 08:00 – 17:00 Uhr<br>Samstag/Sonntag: 08:00 – 12:00 Uhr</p></div>
+</div>
+</div>
+</section>
+
+<!-- MASCHINEN -->
+<section id="maschinen" class="page">
+<div class="container">
+<h2>Unsere Maschinen</h2>
+<p>Entdecken Sie unsere innovative und leistungsstarke Landmaschinentechnologie, die Ihnen Effizienz, Zuverlässigkeit und höchste Produktivität garantiert.</p>
+<div class="grid">
+<div class="card"><img src="https://via.placeholder.com/400x250" alt="Traktoren"><h3>Traktoren</h3><p>Modernste Traktoren für Ackerbau, Grünland und Transport – leistungsstark, sparsam und komfortabel.</p></div>
+<div class="card"><img src="https://via.placeholder.com/400x250" alt="Anbaugeräte"><h3>Anbaugeräte</h3><p>Vielseitige Anbaugeräte für Bodenbearbeitung, Aussaat und Pflege – maximieren Sie Effizienz und Präzision.</p></div>
+<div class="card"><img src="https://via.placeholder.com/400x250" alt="Erntemaschinen"><h3>Erntemaschinen</h3><p>Hochleistungs-Erntemaschinen für effiziente, präzise und sichere Ernteprozesse.</p></div>
+</div>
+</div>
+</section>
+
+<!-- SERVICE -->
+<section id="service" class="page">
+<div class="container">
+<h2>Service & Leistungen</h2>
+<p>Unser umfassender Service sorgt dafür, dass Ihre Maschinen jederzeit einsatzbereit bleiben – von Wartung bis Beratung.</p>
+<div class="grid">
+<div class="card"><h3>Werkstatt & Reparatur</h3><p>Fachgerechte Wartung und Reparatur durch erfahrene Spezialisten sichern die Langlebigkeit Ihrer Maschinen.</p></div>
+<div class="card"><h3>Ersatzteilservice</h3><p>Original- und Verschleißteile schnell und zuverlässig – für minimale Ausfallzeiten und maximale Effizienz.</p></div>
+<div class="card"><h3>Beratung & Betreuung</h3><p>Individuelle Beratung für Investitionen, Optimierungen und langfristige Betriebsplanung – wir unterstützen Sie kompetent.</p></div>
+</div>
+<div style="margin-top:40px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+<h3>Neuer Service/Werkstatttermin</h3>
+<form id="serviceForm">
+<label>Firma / Name*</label><input type="text" id="sFirma" required>
+<label>Ansprechpartner*</label><input type="text" id="sAnsprechpartner" required>
+<label>Adresse*</label><input type="text" id="sAdresse" required>
+<label>Maschine / Anliegen*</label><input type="text" id="sMaschine" required>
+<label>Datum*</label><input type="date" id="sDatum" required>
+<label>Uhrzeit*</label><input type="time" id="sUhrzeit" required>
+<label>Beschreibung / Grund</label><textarea id="sInfo" rows="3"></textarea>
+<button type="button" class="submit" id="downloadServicePdf">PDF herunterladen</button>
+<button type="button" class="submit" id="sendServiceDiscord">An Discord senden</button>
+</form>
+<p id="serviceMsg" style="color:green; display:none; margin-top:10px;">Service-Anfrage erfolgreich an Discord gesendet!</p>
+</div>
+</div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="page">
+<div class="container">
+<h2>Neukundenformular</h2>
+<p>Kontaktieren Sie uns unkompliziert über unser Formular. Wir erstellen Ihnen ein maßgeschneidertes Angebot und beraten Sie professionell.</p>
+<form>
+<label>Firmenname / Name*</label><input type="text" required>
+<label>Ansprechpartner*</label><input type="text" required>
+<label>Adresse</label><input type="text">
+<label>PLZ / Ort</label><input type="text">
+<label>Interesse an</label><select><option>Traktoren</option><option>Erntemaschinen</option><option>Anbaugeräte</option><option>Service</option></select>
+<label>Nachricht</label><textarea rows="5"></textarea>
+<button type="submit" class="submit">Anfrage absenden</button>
+</form>
+</div>
+</section>
+
+<!-- GEBRAUCHTMASCHINEN -->
+<section id="gebraucht" class="page">
+<div class="container">
+<h2>Gebrauchtmaschinen</h2>
+<div style="margin-top:20px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+<h3>Gebrauchtmaschinen Formular</h3>
+<form id="gebrauchtForm">
+<label>Firma / Name*</label><input type="text" id="gFirma" required>
+<label>Ansprechpartner*</label><input type="text" id="gAnsprechpartner" required>
+<label>Adresse*</label><input type="text" id="gAdresse" required>
+<label>Maschine / Angebot*</label><input type="text" id="gMaschine" required>
+<label>Preisangebot*</label><input type="text" id="gPreis" required>
+<button type="button" class="submit" id="downloadGebrauchtPdf">PDF herunterladen</button>
+<button type="button" class="submit" id="sendGebrauchtDiscord">An Discord senden</button>
+</form>
+<p id="gebrauchtMsg" style="color:green; display:none; margin-top:10px;">Anfrage erfolgreich an Discord gesendet!</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 Landmaschinenhandel Hofstetter</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+    window.showPage = function(pageId){
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0,0);
+    };
+
+    window.toggleSidebar = function(hamburger){
+        const sidebar = document.getElementById('sidebar');
+        const main = document.getElementById('main');
+        sidebar.classList.toggle('active');
+        main.classList.toggle('shifted');
+        if(hamburger){ hamburger.classList.toggle('open'); }
+    };
+
+    const { jsPDF } = window.jspdf;
+
+    // Service Discord senden
+    document.getElementById('sendServiceDiscord').addEventListener('click', ()=>{
+        const data = {
+            content: `Neuer Service/ Werkstatttermin:\nFirma: ${document.getElementById('sFirma').value}\nAnsprechpartner: ${document.getElementById('sAnsprechpartner').value}\nAdresse: ${document.getElementById('sAdresse').value}\nMaschine/Anliegen: ${document.getElementById('sMaschine').value}\nDatum: ${document.getElementById('sDatum').value}\nUhrzeit: ${document.getElementById('sUhrzeit').value}\nBeschreibung: ${document.getElementById('sInfo').value}`
+        };
+        fetch('https://discord.com/api/webhooks/1455933513814769797/MuKVTdKF42kwa5W3yxgYOP51uPq1MwPmhsDnaarHx-2uheUFGLwsI0pH8e_lXE6HHzrh', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
+        }).then(()=>{
+            document.getElementById('serviceMsg').style.display='block';
+        });
+    });
+
+    // Gebrauchtmaschinen Discord senden
+    document.getElementById('sendGebrauchtDiscord').addEventListener('click', ()=>{
+        const data = {
+            content: `Neue Gebrauchtmaschinen-Anfrage:\nFirma: ${document.getElementById('gFirma').value}\nAnsprechpartner: ${document.getElementById('gAnsprechpartner').value}\nAdresse: ${document.getElementById('gAdresse').value}\nMaschine/Angebot: ${document.getElementById('gMaschine').value}\nPreisangebot: ${document.getElementById('gPreis').value}`
+        };
+        fetch('https://discord.com/api/webhooks/1455930701357514752/cYOWSfpwBAl2FXIBzOj1tKOQg0ozQF2-7ix6G6Xgo8k-gTgm4-YaLYFxqY8CUYzQPv4i', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
+        }).then(()=>{
+            document.getElementById('gebrauchtMsg').style.display='block';
+        });
+    });
+});
+
+const USERNAME = 'admin';
+const PASSWORD = 'passwort123';
+
+document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const user = document.getElementById('loginUser').value;
+    const pass = document.getElementById('loginPass').value;
+    if(user === USERNAME && pass === PASSWORD){
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('addMachineContainer').style.display = 'block';
+    } else {
+        document.getElementById('loginMessage').style.display = 'block';
+    }
+});
+</script>
+
+</body>
+</html>
